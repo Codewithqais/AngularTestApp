@@ -1,22 +1,23 @@
-
-import { RouterOutlet } from '@angular/router';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
-import {SidebarComponent} from './sidebar/sidebar.component';
-import { LandingPageComponent } from "./landing-page/landing-page.component";
-import { HeroLandingComponent } from "./hero-landing/hero-landing.component";
-import { HeaderComponent } from "./header/header.component";
+import { LandingPageComponent } from '../landing-page/landing-page.component';
+import { FooterComponent } from '../footer/footer.component';
+import { CATComponent } from "../cat/cat.component";
+import { HeroLandingComponent } from '../hero-landing/hero-landing.component';
+import { ContactComponent } from "../contact/contact.component";
+import { CodingComponent } from "../coding/coding.component";
+import { TestimonialsComponent } from '../testimonials/testimonials.component';
+import { MainsectionComponent } from "../mainsection/mainsection.component";
+import { CopilotComponent } from "../copilot/copilot.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, HeroLandingComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-sidebar',
+  imports: [CommonModule, RouterLink, RouterLinkActive, LandingPageComponent, FooterComponent, CATComponent, HeroLandingComponent, ContactComponent, CodingComponent, TestimonialsComponent, MainsectionComponent, CopilotComponent],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class AppComponent {
+export class SidebarComponent {
   isCollapsed = false;
   isMobileMenuOpen = false;
   isMobileView = false;

@@ -1,0 +1,32 @@
+<div class="coding-container">
+  <header class="coding-header">
+    <h1>{{ title }}</h1>
+    <p class="description">{{ description }}</p>
+  </header>
+
+  <div class="features-section">
+    <div *ngFor="let feature of features" class="feature-card">
+      <h3>{{ feature.title }}</h3>
+      <div *ngIf="feature.items; else simpleDesc">
+        <ul>
+          <li *ngFor="let item of feature.items">{{ item }}</li>
+        </ul>
+      </div>
+      <ng-template #simpleDesc>
+        <p>{{ feature.description }}</p>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="latest-issues">
+    <h2>These were the latest issues I found:</h2>
+    <ul>
+      <!-- Fixed with null check -->
+      <li *ngFor="let issue of latestIssues || []">{{ issue }}</li>
+    </ul>
+    <!-- Debug output -->
+    <p *ngIf="!latestIssues" style="color: red">
+      Warning: latestIssues is not defined!
+    </p>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+/* Custom animations */
+:host {
+  display: block;
+  position: relative;
+}
+
+/* Floating animation for the radial gradients */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bg-gradient-to-tr {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Pulse animation for the CTA button */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+  }
+}
+
+.bg-indigo-600 {
+  animation: pulse 2s infinite;
+}

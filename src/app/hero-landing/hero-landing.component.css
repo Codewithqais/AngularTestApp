@@ -1,0 +1,45 @@
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-card {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+/* Element animations */
+.animate-float {
+  animation: float-card 8s ease-in-out infinite;
+}
+
+/* Particle animations */
+.bg-blue-500-20 {
+  animation: float var(--duration) ease-in-out infinite var(--delay);
+}
+
+/* Gradient animation */
+.bg-gradient-to-tr {
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Button hover effect */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
