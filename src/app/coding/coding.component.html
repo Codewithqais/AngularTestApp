@@ -1,32 +1,287 @@
-<div class="coding-container">
-  <header class="coding-header">
-    <h1>{{ title }}</h1>
-    <p class="description">{{ description }}</p>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Coding Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-  <div class="features-section">
-    <div *ngFor="let feature of features" class="feature-card">
-      <h3>{{ feature.title }}</h3>
-      <div *ngIf="feature.items; else simpleDesc">
-        <ul>
-          <li *ngFor="let item of feature.items">{{ item }}</li>
-        </ul>
-      </div>
-      <ng-template #simpleDesc>
-        <p>{{ feature.description }}</p>
-      </ng-template>
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Typing animation */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        .typing-animation {
+            width: 0;
+            animation: typing 3s steps(40, end) infinite, blink 1s step-end infinite;
+            border-right: 2px solid #60a5fa;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Floating code blocks */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+            75% { transform: translateY(-15px) rotate(0.5deg); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating:nth-child(2) { animation-delay: -2s; }
+        .floating:nth-child(3) { animation-delay: -4s; }
+
+        /* Matrix rain effect */
+        @keyframes matrix {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .matrix-char {
+            animation: matrix 3s linear infinite;
+            color: #10b981;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Glitch effect */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        /* Code highlight animation */
+        @keyframes highlight {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        .code-highlight {
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.3), transparent);
+            background-size: 200% 100%;
+            animation: highlight 2s infinite;
+        }
+
+        /* Terminal cursor */
+        .terminal-cursor {
+            animation: blink 1s infinite;
+        }
+
+        /* Neon glow */
+        .neon-glow {
+            text-shadow: 0 0 5px #60a5fa, 0 0 10px #60a5fa, 0 0 15px #60a5fa;
+        }
+
+        /* Circuit pattern */
+        .circuit-bg {
+            background-image:
+                radial-gradient(circle at 25% 25%, #1e40af 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #3b82f6 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Coding Component -->
+<section class="w-full bg-[rgb(16,24,40)] relative overflow-hidden py-20 px-6">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 circuit-bg"></div>
+
+    <!-- Matrix Rain Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="matrix-char absolute text-xs opacity-20" style="left: 10%; animation-delay: 0s;">01</div>
+        <div class="matrix-char absolute text-xs opacity-15" style="left: 20%; animation-delay: 0.5s;">11</div>
+        <div class="matrix-char absolute text-xs opacity-25" style="left: 30%; animation-delay: 1s;">00</div>
+        <div class="matrix-char absolute text-xs opacity-10" style="left: 40%; animation-delay: 1.5s;">10</div>
+        <div class="matrix-char absolute text-xs opacity-20" style="left: 50%; animation-delay: 2s;">01</div>
+        <div class="matrix-char absolute text-xs opacity-15" style="left: 60%; animation-delay: 2.5s;">11</div>
+        <div class="matrix-char absolute text-xs opacity-25" style="left: 70%; animation-delay: 0.3s;">00</div>
+        <div class="matrix-char absolute text-xs opacity-10" style="left: 80%; animation-delay: 0.8s;">10</div>
+        <div class="matrix-char absolute text-xs opacity-20" style="left: 90%; animation-delay: 1.3s;">01</div>
     </div>
-  </div>
 
-  <div class="latest-issues">
-    <h2>These were the latest issues I found:</h2>
-    <ul>
-      <!-- Fixed with null check -->
-      <li *ngFor="let issue of latestIssues || []">{{ issue }}</li>
-    </ul>
-    <!-- Debug output -->
-    <p *ngIf="!latestIssues" style="color: red">
-      Warning: latestIssues is not defined!
-    </p>
-  </div>
-</div>
+    <!-- Floating Code Blocks -->
+    <div class="absolute top-10 left-10 floating opacity-20">
+        <div class="bg-blue-500/20 backdrop-blur-sm rounded-lg p-4 border border-blue-400/30">
+            <code class="code-font text-blue-300 text-sm">function() &#123; &#125;</code>
+        </div>
+    </div>
+
+    <div class="absolute top-32 right-16 floating opacity-15">
+        <div class="bg-green-500/20 backdrop-blur-sm rounded-lg p-3 border border-green-400/30">
+            <code class="code-font text-green-300 text-xs">&lt;/&gt;</code>
+        </div>
+    </div>
+
+    <div class="absolute bottom-20 left-1/4 floating opacity-25">
+        <div class="bg-purple-500/20 backdrop-blur-sm rounded-lg p-3 border border-purple-400/30">
+            <code class="code-font text-purple-300 text-xs">&#123; &#125;</code>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center space-x-3 mb-6">
+                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl flex items-center justify-center shadow-2xl">
+                    <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 3l4 4-4 4M16 3l-4 4 4 4M12 21v-2M12 3v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-bold text-white neon-glow glitch">Coding</h2>
+            </div>
+
+            <!-- Typing Animation -->
+            <div class="code-font text-xl text-blue-300 mb-8 h-8">
+                <span class="typing-animation">const passion = "code" + "creativity";</span>
+            </div>
+
+            <p class="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+                Where logic meets creativity, algorithms become art, and every line of code tells a story.
+                We craft digital experiences that push boundaries and redefine possibilities.
+            </p>
+        </div>
+
+        <!-- Interactive Code Display -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Terminal Window -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden shadow-2xl">
+                <div class="bg-gray-800/80 p-4 flex items-center space-x-3">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <span class="code-font text-gray-400 text-sm">terminal</span>
+                </div>
+                <div class="p-6 code-font text-sm">
+                    <div class="text-green-400 mb-2">$ npm install creativity</div>
+                    <div class="text-blue-400 mb-2">$ git commit -m "Building the future"</div>
+                    <div class="text-purple-400 mb-2">$ deploy --production --innovative</div>
+                    <div class="text-gray-400 mb-2">✨ Deployment successful!</div>
+                    <div class="flex items-center">
+                        <span class="text-green-400">$</span>
+                        <span class="terminal-cursor ml-2 bg-green-400 w-2 h-5 inline-block"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Editor Window - FIXED CURLY BRACES -->
+            <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden shadow-2xl">
+                <div class="bg-gray-800/80 p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <span class="code-font text-gray-400 text-sm">innovation.js</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                    </div>
+                </div>
+                <div class="p-6 code-font text-sm space-y-2">
+                    <div class="text-purple-400">class <span class="text-yellow-400">Developer</span> &#123;</div>
+                    <div class="ml-4 text-blue-400">constructor(<span class="text-orange-400">passion</span>) &#123;</div>
+                    <div class="ml-8 text-gray-300">this.<span class="text-green-400">skills</span> = <span class="text-orange-400">['creativity', 'logic']</span>;</div>
+                    <div class="ml-8 text-gray-300">this.<span class="text-green-400">passion</span> = <span class="text-orange-400">passion</span>;</div>
+                    <div class="ml-4 text-blue-400">&#125;</div>
+                    <div class="ml-4 code-highlight text-cyan-400">createMagic() &#123;</div>
+                    <div class="ml-8 text-gray-300">return <span class="text-orange-400">'Amazing Code'</span>;</div>
+                    <div class="ml-4 text-cyan-400">&#125;</div>
+                    <div class="text-purple-400">&#125;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <!-- Frontend -->
+            <div class="group bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-400/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
+                <div class="w-16 h-16 bg-blue-500/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-blue-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Frontend</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">React, Vue, Angular - Creating stunning user interfaces that captivate and engage</p>
+            </div>
+
+            <!-- Backend -->
+            <div class="group bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-2xl p-8 border border-green-400/30 hover:border-green-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25">
+                <div class="w-16 h-16 bg-green-500/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-green-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-green-300 transition-colors">Backend</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Node.js, Python, Go - Building robust architectures that power digital experiences</p>
+            </div>
+
+            <!-- Mobile -->
+            <div class="group bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-400/30 hover:border-purple-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
+                <div class="w-16 h-16 bg-purple-500/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-purple-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Mobile</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Flutter, React Native - Bringing ideas to life on every device, everywhere</p>
+            </div>
+
+            <!-- AI/ML -->
+            <div class="group bg-gradient-to-br from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30 hover:border-orange-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
+                <div class="w-16 h-16 bg-orange-500/30 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-8 h-8 text-orange-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">AI/ML</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">TensorFlow, PyTorch - Harnessing artificial intelligence to solve tomorrow's challenges</p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center">
+            <div class="inline-flex items-center space-x-4">
+                <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 group">
+                    <span class="group-hover:scale-110 transition-transform duration-200">Start Coding</span>
+                </button>
+                <button class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 group">
+                    <span class="group-hover:scale-110 transition-transform duration-200">View Projects</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Floating Elements -->
+    <div class="absolute top-1/2 left-5 w-3 h-3 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+    <div class="absolute top-1/4 right-8 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-40" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-purple-400 rounded-full animate-pulse opacity-30" style="animation-delay: 2s;"></div>
+</section>

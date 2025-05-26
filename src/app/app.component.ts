@@ -8,11 +8,13 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import { LandingPageComponent } from "./landing-page/landing-page.component";
 import { HeroLandingComponent } from "./hero-landing/hero-landing.component";
 import { HeaderComponent } from "./header/header.component";
+import { UserAdminComponent,  } from './useradmin/useradmin.component';
+import { CodingComponent } from "./coding/coding.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, HeroLandingComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, HeroLandingComponent, UserAdminComponent, CodingComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

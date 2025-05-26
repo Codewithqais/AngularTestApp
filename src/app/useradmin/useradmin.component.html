@@ -1,0 +1,90 @@
+<!-- src/app/components/user-admin/user-admin.component.html -->
+<div class="user-admin-container">
+  <h1>User Administration</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterUsers()"
+      placeholder="Search users..."
+    />
+    <button (click)="addNewUser()">Add New User</button>
+  </div>
+
+  <div class="user-content">
+    <div class="user-list">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of filteredUsers(); track user.id) {
+            <tr [class.selected]="selectedUser()?.id === user.id">
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>{{ user.status }}</td>
+              <td>
+                <button (click)="selectUser(user)">Edit</button>
+                <button (click)="deleteUser(user.id)">Delete</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    @if (selectedUser()) {
+      <div class="user-details">
+        <h2>{{ selectedUser()?.id ? 'Edit User' : 'Add New User' }}</h2>
+
+        <form (submit)="saveUser()">
+          <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" [(ngModel)]="selectedUser()!.firstName" name="firstName" required>
+          </div>
+
+          <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" [(ngModel)]="selectedUser()!.lastName" name="lastName" required>
+          </div>
+
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="email" [(ngModel)]="selectedUser()!.email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Role:</label>
+            <select [(ngModel)]="selectedUser()!.role" name="role">
+              <option value="admin">Admin</option>
+              <option value="editor">Editor</option>
+              <option value="viewer">Viewer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status:</label>
+            <select [(ngModel)]="selectedUser()!.status" name="status">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Save</button>
+            <button type="button" (click)="selectedUser.set(null)">Cancel</button>
+          </div>
+        </form>
+      </div>
+    }
+  </div>
+</div>
