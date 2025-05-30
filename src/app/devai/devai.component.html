@@ -1,1 +1,350 @@
-<p>devai works!</p>
+<div class="devai-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">🤖</span>
+        <h1>DevAI Intelligence</h1>
+      </div>
+      <button class="refresh-btn" (click)="refreshData()">
+        <span class="refresh-icon">🔄</span>
+        Refresh
+      </button>
+    </div>
+  </header>
+
+  <!-- Progress Indicator -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <h2>How Your Team Uses DevAI</h2>
+      <div class="step-indicator">
+        Step {{ currentStep }} of {{ totalSteps }}
+      </div>
+    </div>
+    <div class="progress-steps">
+      <div class="step"
+           [class.active]="currentStep === 1"
+           [@fadeIn]="currentStep === 1">
+        <div class="step-icon">🔐</div>
+        <div class="step-content">
+          <h3>Connect Tools</h3>
+          <p>Integrate Jira, GitHub, and Azure DevOps</p>
+        </div>
+      </div>
+      <div class="step"
+           [class.active]="currentStep === 2"
+           [@fadeIn]="currentStep === 2">
+        <div class="step-icon">🔍</div>
+        <div class="step-content">
+          <h3>Analyze Tasks</h3>
+          <p>AI scans tickets and suggests improvements</p>
+        </div>
+      </div>
+      <div class="step"
+           [class.active]="currentStep === 3"
+           [@fadeIn]="currentStep === 3">
+        <div class="step-icon">🔎</div>
+        <div class="step-content">
+          <h3>PR Intelligence</h3>
+          <p>Smart pull request analysis and risk detection</p>
+        </div>
+      </div>
+      <div class="step"
+           [class.active]="currentStep === 4"
+           [@fadeIn]="currentStep === 4">
+        <div class="step-icon">📈</div>
+        <div class="step-content">
+          <h3>Sprint Metrics</h3>
+          <p>Live dashboard with development insights</p>
+        </div>
+      </div>
+      <div class="step"
+           [class.active]="currentStep === 5"
+           [@fadeIn]="currentStep === 5">
+        <div class="step-icon">🧠</div>
+        <div class="step-content">
+          <h3>AI Learning</h3>
+          <p>Continuous improvement through feedback</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <button class="tab"
+            [class.active]="activeTab === 'overview'"
+            [@pulse]="animationState"
+            (click)="setActiveTab('overview')">
+      📊 Overview
+    </button>
+    <button class="tab"
+            [class.active]="activeTab === 'jira'"
+            [@pulse]="animationState"
+            (click)="setActiveTab('jira')">
+      🎯 Jira Analysis
+    </button>
+    <button class="tab"
+            [class.active]="activeTab === 'github'"
+            [@pulse]="animationState"
+            (click)="setActiveTab('github')">
+      🐙 PR Intelligence
+    </button>
+    <button class="tab"
+            [class.active]="activeTab === 'metrics'"
+            [@pulse]="animationState"
+            (click)="setActiveTab('metrics')">
+      📈 Sprint Metrics
+    </button>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content" [@slideIn]>
+
+    <!-- Overview Tab -->
+    <div *ngIf="activeTab === 'overview'" class="tab-content">
+      <div class="overview-grid">
+
+        <!-- Integrations Card -->
+        <div class="card integrations-card">
+          <div class="card-header">
+            <h3>🔗 Connected Tools</h3>
+          </div>
+          <div class="integrations-list">
+            <div *ngFor="let integration of integrations"
+                 class="integration-item"
+                 [class.connected]="integration.connected">
+              <div class="integration-info">
+                <span class="integration-icon">{{ integration.icon }}</span>
+                <div class="integration-details">
+                  <strong>{{ integration.name }}</strong>
+                  <span class="status" [style.color]="integration.color">
+                    {{ integration.status }}
+                  </span>
+                </div>
+              </div>
+              <button *ngIf="!integration.connected"
+                      class="connect-btn"
+                      (click)="connectIntegration(integration.name)">
+                Connect
+              </button>
+              <span *ngIf="integration.connected" class="connected-badge">✅</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="card stats-card">
+          <div class="card-header">
+            <h3>⚡ Quick Stats</h3>
+          </div>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-value">{{ jiraTickets.length }}</div>
+              <div class="stat-label">Active Tickets</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">{{ pullRequests.length }}</div>
+              <div class="stat-label">Open PRs</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">68%</div>
+              <div class="stat-label">Avg Clarity</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">3.2h</div>
+              <div class="stat-label">Avg Review</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Use Case Example -->
+        <div class="card example-card">
+          <div class="card-header">
+            <h3>🎯 Use Case: Subscription System</h3>
+          </div>
+          <div class="example-content">
+            <div class="before-after">
+              <div class="before">
+                <h4>❌ Without DevAI</h4>
+                <ul>
+                  <li>Vague tickets: "Add user validation"</li>
+                  <li>Large, unclear PRs overwhelm reviewers</li>
+                  <li>Sprint velocity down due to miscommunication</li>
+                </ul>
+              </div>
+              <div class="after">
+                <h4>✅ With DevAI</h4>
+                <ul>
+                  <li>AI asks 4 clarification questions</li>
+                  <li>Clarity score improves 45% → 90%</li>
+                  <li>PR summaries and automated test suggestions</li>
+                  <li>Smoother sprints, less back-and-forth</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jira Analysis Tab -->
+    <div *ngIf="activeTab === 'jira'" class="tab-content">
+      <div class="jira-header">
+        <h2>🎯 Jira Task Analysis</h2>
+        <p>AI-powered ticket clarity and improvement suggestions</p>
+      </div>
+
+      <div class="tickets-grid">
+        <div *ngFor="let ticket of jiraTickets"
+             class="ticket-card"
+             [class.needs-attention]="ticket.status === 'needs-review'">
+
+          <div class="ticket-header">
+            <div class="ticket-id">{{ ticket.id }}</div>
+            <div class="ticket-type" [class]="ticket.type">{{ ticket.type }}</div>
+          </div>
+
+          <h4 class="ticket-title">{{ ticket.title }}</h4>
+
+          <div class="clarity-score">
+            <div class="score-label">Clarity Score</div>
+            <div class="score-bar">
+              <div class="score-fill"
+                   [style.width.%]="ticket.clarityScore"
+                   [style.background-color]="getClarityScoreColor(ticket.clarityScore)">
+              </div>
+            </div>
+            <div class="score-value"
+                 [style.color]="getClarityScoreColor(ticket.clarityScore)">
+              {{ ticket.clarityScore }}%
+            </div>
+          </div>
+
+          <div *ngIf="ticket.aiQuestions.length > 0" class="ai-questions">
+            <h5>🤖 AI Suggestions:</h5>
+            <ul>
+              <li *ngFor="let question of ticket.aiQuestions">{{ question }}</li>
+            </ul>
+          </div>
+
+          <div class="ticket-actions">
+            <button class="action-btn primary"
+                    *ngIf="ticket.status === 'needs-review'">
+              Answer Questions
+            </button>
+            <button class="action-btn secondary">View in Jira</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub PR Intelligence Tab -->
+    <div *ngIf="activeTab === 'github'" class="tab-content">
+      <div class="github-header">
+        <h2>🐙 Pull Request Intelligence</h2>
+        <p>Smart analysis and risk detection for your PRs</p>
+      </div>
+
+      <div class="prs-grid">
+        <div *ngFor="let pr of pullRequests"
+             class="pr-card"
+             [class.high-risk]="pr.riskLevel === 'high'">
+
+          <div class="pr-header">
+            <div class="pr-id">{{ pr.id }}</div>
+            <div class="risk-badge"
+                 [style.background-color]="getRiskLevelColor(pr.riskLevel)">
+              {{ pr.riskLevel }} risk
+            </div>
+          </div>
+
+          <h4 class="pr-title">{{ pr.title }}</h4>
+          <div class="pr-author">by {{ pr.author }}</div>
+
+          <div class="pr-stats">
+            <div class="stat">
+              <span class="stat-icon">📝</span>
+              <span>{{ pr.linesChanged }} lines</span>
+            </div>
+            <div class="stat">
+              <span class="stat-icon">📁</span>
+              <span>{{ pr.filesImpacted }} files</span>
+            </div>
+          </div>
+
+          <div class="ai-summary">
+            <h5>🤖 AI Summary:</h5>
+            <p>{{ pr.aiSummary }}</p>
+          </div>
+
+          <div class="test-suggestions" *ngIf="pr.testSuggestions.length > 0">
+            <h5>🧪 Suggested Tests:</h5>
+            <ul>
+              <li *ngFor="let suggestion of pr.testSuggestions">{{ suggestion }}</li>
+            </ul>
+          </div>
+
+          <div class="pr-actions">
+            <button class="action-btn primary">Review PR</button>
+            <button class="action-btn secondary">View on GitHub</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sprint Metrics Tab -->
+    <div *ngIf="activeTab === 'metrics'" class="tab-content">
+      <div class="metrics-header">
+        <h2>📈 Sprint Metrics & Insights</h2>
+        <p>Live dashboard for development performance</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div *ngFor="let metric of sprintMetrics" class="metric-card">
+          <div class="metric-header">
+            <h4>{{ metric.label }}</h4>
+            <span class="trend-icon">{{ getTrendIcon(metric.trend) }}</span>
+          </div>
+
+          <div class="metric-value">
+            {{ metric.value }}<span class="unit">{{ metric.unit }}</span>
+          </div>
+
+          <div class="metric-change"
+               [class.positive]="metric.change > 0"
+               [class.negative]="metric.change < 0">
+            {{ metric.change > 0 ? '+' : '' }}{{ metric.change }}{{ metric.unit }}
+            <span class="change-label">vs last sprint</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Activity -->
+      <div class="activity-section">
+        <h3>👥 Team Activity Overview</h3>
+        <div class="activity-grid">
+          <div class="activity-card">
+            <h4>Most Active Developer</h4>
+            <div class="developer-info">
+              <span class="avatar">👩‍💻</span>
+              <div>
+                <strong>sarah.dev</strong>
+                <div>32 commits, 8 PRs reviewed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <h4>Bottlenecks Identified</h4>
+            <ul class="bottleneck-list">
+              <li>🚨 3 PRs waiting for review > 24h</li>
+              <li>⚠️ 2 tickets blocked on clarification</li>
+              <li>📋 1 epic needs breakdown</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
