@@ -10,15 +10,20 @@ import { HeroLandingComponent } from "./hero-landing/hero-landing.component";
 import { HeaderComponent } from "./header/header.component";
 import { UserAdminComponent,  } from './useradmin/useradmin.component';
 import { CodingComponent } from "./coding/coding.component";
+import { DevaiComponent } from './devai/devai.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, HeroLandingComponent, UserAdminComponent, CodingComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, CodingComponent,DevaiComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   isCollapsed = false;
   isMobileMenuOpen = false;
   isMobileView = false;

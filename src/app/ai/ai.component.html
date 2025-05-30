@@ -1,0 +1,490 @@
+
+
+<div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; right: 10%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    DevAI
+                </div>
+                <div class="nav">
+                    <div class="nav-item active">Dashboard</div>
+                    <div class="nav-item">Analytics</div>
+                    <div class="nav-item">Projects</div>
+                    <div class="nav-item">Integrations</div>
+                    <div class="nav-item">Settings</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">
+                        <span>📊</span> Jira Projects
+                    </div>
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" class="search-input" placeholder="Search projects...">
+                    </div>
+                    <ul class="project-list">
+                        <li class="project-item active">
+                            <div class="project-icon jira-icon">JP</div>
+                            <div class="project-info">
+                                <div class="project-name">E-Commerce Platform</div>
+                                <div class="project-details">ECOM • 47 issues</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon jira-icon">UA</div>
+                            <div class="project-info">
+                                <div class="project-name">User Analytics</div>
+                                <div class="project-details">UANALYTICS • 23 issues</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon jira-icon">MP</div>
+                            <div class="project-info">
+                                <div class="project-name">Mobile App</div>
+                                <div class="project-details">MOBILE • 15 issues</div>
+                            </div>
+                            <div class="project-status status-inactive"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon jira-icon">AP</div>
+                            <div class="project-info">
+                                <div class="project-name">API Gateway</div>
+                                <div class="project-details">GATEWAY • 8 issues</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">
+                        <span>🐙</span> GitHub Repos
+                    </div>
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" class="search-input" placeholder="Search repositories...">
+                    </div>
+                    <ul class="project-list">
+                        <li class="project-item">
+                            <div class="project-icon github-icon">FE</div>
+                            <div class="project-info">
+                                <div class="project-name">frontend-react</div>
+                                <div class="project-details">12 PRs • TypeScript</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon github-icon">BE</div>
+                            <div class="project-info">
+                                <div class="project-name">backend-api</div>
+                                <div class="project-details">8 PRs • Node.js</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon github-icon">ML</div>
+                            <div class="project-info">
+                                <div class="project-name">ml-models</div>
+                                <div class="project-details">3 PRs • Python</div>
+                            </div>
+                            <div class="project-status status-inactive"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon github-icon">DV</div>
+                            <div class="project-info">
+                                <div class="project-name">devops-scripts</div>
+                                <div class="project-details">5 PRs • Shell</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                        <li class="project-item">
+                            <div class="project-icon github-icon">DB</div>
+                            <div class="project-info">
+                                <div class="project-name">database-migrations</div>
+                                <div class="project-details">2 PRs • SQL</div>
+                            </div>
+                            <div class="project-status status-active"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <!-- Ticket Clarity Score -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon clarity-score">📊</div>
+                        <div>
+                            <div class="card-title">Ticket Clarity Score</div>
+                            <div class="card-subtitle">ECOM-233: Add user permissions</div>
+                        </div>
+                    </div>
+                    <div class="score-display">35%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%; background: linear-gradient(135deg, #ef4444, #f97316);"></div>
+                    </div>
+                    <p style="margin: 16px 0;"><strong>Status:</strong> ⚠️ Needs clarification before sprint</p>
+                    <button class="btn btn-primary" onclick="showClarification()">✨ Get AI Clarification</button>
+                </div>
+
+                <!-- AI Task Clarification -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon task-clarification">❓</div>
+                        <div>
+                            <div class="card-title">AI Clarification</div>
+                            <div class="card-subtitle">Smart questions generated</div>
+                        </div>
+                    </div>
+                    <ul class="question-list">
+                        <li class="question-item">🔒 What are the specific permission levels? (read, write, admin)</li>
+                        <li class="question-item">👥 Which user roles should have permission management access?</li>
+                        <li class="question-item">🔄 Should permissions be inherited or explicitly assigned?</li>
+                        <li class="question-item">📊 Do we need audit logging for permission changes?</li>
+                    </ul>
+                    <button class="btn btn-primary">📤 Send to Slack</button>
+                </div>
+
+                <!-- Sprint Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon sprint-summary">📈</div>
+                                            <button class="btn btn-primary" onclick="showClarification()">✨ Get AI Suggestions</button>
+                </div>
+
+                <!-- Task Clarification -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon task-clarification">❓</div>
+                        <div>
+                            <div class="card-title">Task Clarification</div>
+                            <div class="card-subtitle">Key questions from this ticket</div>
+                        </div>
+                    </div>
+                    <ul class="question-list">
+                        <li class="question-item">
+                            <strong>What permission levels should be implemented?</strong><br>
+                            The ticket mentions "user permissions" but doesn't specify levels or roles.
+                        </li>
+                        <li class="question-item">
+                            <strong>Which user actions need permission control?</strong><br>
+                            Should this cover all CRUD operations or specific ones?
+                        </li>
+                        <li class="question-item">
+                            <strong>Should we integrate with existing auth system?</strong><br>
+                            No mention of whether to extend current auth or create new.
+                        </li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showClarification()">📝 Generate Clarification Request</button>
+                </div>
+
+                <!-- Sprint Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon sprint-summary">🏃</div>
+                        <div>
+                            <div class="card-title">Sprint Summary</div>
+                            <div class="card-subtitle">Current Sprint: ECOM-2023-11</div>
+                        </div>
+                    </div>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-number completed">24</div>
+                            <div>Completed</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-number in-progress">15</div>
+                            <div>In Progress</div>
+                        </div>
+                        <div class="status-item">
+                            <div class="status-number blocked">3</div>
+                            <div>Blocked</div>
+                        </div>
+                    </div>
+                    <p style="margin: 16px 0;"><strong>Burndown:</strong> 3 days ahead of schedule</p>
+                    <p style="margin-bottom: 16px;"><strong>Focus Areas:</strong> Checkout flow, User permissions</p>
+                    <button class="btn btn-primary" onclick="showSprintAnalysis()">📊 View Detailed Analysis</button>
+                </div>
+
+                <!-- Test Cases -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon test-cases">🧪</div>
+                        <div>
+                            <div class="card-title">Test Cases</div>
+                            <div class="card-subtitle">Generated for ECOM-233</div>
+                        </div>
+                    </div>
+                    <div class="test-case">
+                        <strong>TC-01:</strong> Verify admin can modify all user permissions
+                    </div>
+                    <div class="test-case">
+                        <strong>TC-02:</strong> Verify editor cannot modify admin permissions
+                    </div>
+                    <div class="test-case">
+                        <strong>TC-03:</strong> Verify viewer cannot modify any permissions
+                    </div>
+                    <div class="test-case">
+                        <strong>TC-04:</strong> Verify permission changes persist after logout
+                    </div>
+                    <button class="btn btn-primary" onclick="showTestCases()">🧠 Generate More Test Cases</button>
+                </div>
+
+                <!-- Code Modules -->
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🧩</div>
+                        <div>
+                            <div class="card-title">Affected Code Modules</div>
+                            <div class="card-subtitle">Files likely to be modified for ECOM-233</div>
+                        </div>
+                    </div>
+                    <div class="modules-grid">
+                        <div class="module-item">
+                            <div>auth-service.js</div>
+                            <div style="font-size: 12px; color: #94a3b8; margin-top: 8px;">User authentication logic</div>
+                        </div>
+                        <div class="module-item">
+                            <div>permission-middleware.js</div>
+                            <div style="font-size: 12px; color: #94a3b8; margin-top: 8px;">Route protection</div>
+                        </div>
+                        <div class="module-item">
+                            <div>user-controller.js</div>
+                            <div style="font-size: 12px; color: #94a3b8; margin-top: 8px;">User management</div>
+                        </div>
+                        <div class="module-item">
+                            <div>admin-panel.vue</div>
+                            <div style="font-size: 12px; color: #94a3b8; margin-top: 8px;">Admin interface</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Integration -->
+                <div class="integration-section">
+                    <div class="integration-card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">🤖</div>
+                            <div>
+                                <div class="card-title">AI Integration Assistant</div>
+                                <div class="card-subtitle">Automated workflow suggestions based on your project</div>
+                            </div>
+                        </div>
+                        <div class="slack-message">
+                            <strong>Slack #dev-team</strong> - Today at 11:23 AM<br>
+                            <span style="color: #94a3b8;">DevAI:</span> I've detected that ticket ECOM-233 might benefit from the new RBAC pattern we implemented in UANALYTICS-42. Would you like me to suggest similar implementation?
+                        </div>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-primary">✅ Yes, show me the pattern</button>
+                            <button class="btn" style="background: rgba(255, 255, 255, 0.05); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.1);">❌ No, thanks</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="coming-soon full-width">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">🔮</div>
+                            <div>
+                                <div class="card-title">Code Impact Prediction <span class="feature-badge">Beta</span></div>
+                                <div class="card-subtitle">Coming in next release</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 16px;">AI will predict which other parts of the system might be affected by this change based on code dependencies.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #84cc16, #65a30d);">⏱️</div>
+                            <div>
+                                <div class="card-title">Time Estimation <span class="feature-badge">New</span></div>
+                                <div class="card-subtitle">Coming in next release</div>
+                            </div>
+                        </div>
+                        <p style="margin-top: 16px;">Get AI-powered time estimates based on similar past tickets and current team velocity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clarification Modal -->
+    <div id="clarificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('clarificationModal')">&times;</span>
+            <div class="card-header">
+                <div class="card-icon clarity-score">✨</div>
+                <div>
+                    <div class="card-title">AI Clarification Suggestions</div>
+                    <div class="card-subtitle">For ticket ECOM-233: Add user permissions</div>
+                </div>
+            </div>
+            <div style="margin: 24px 0;">
+                <p>Here's a suggested clarification request you can send to the product team:</p>
+                <div style="background: rgba(6, 182, 212, 0.1); border-left: 4px solid #06b6d4; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <p><strong>Subject:</strong> Clarification needed for ECOM-233 - User permissions</p>
+                    <p><strong>Message:</strong></p>
+                    <p>Hi team,</p>
+                    <p>Could you please clarify the following about the user permissions implementation:</p>
+                    <ol>
+                        <li>What are the specific permission levels needed (e.g., viewer, editor, admin)?</li>
+                        <li>Which user actions should be permission-controlled (create, read, update, delete)?</li>
+                        <li>Should we extend the existing auth system or create a new permissions layer?</li>
+                        <li>Are there any specific UI requirements for permission management?</li>
+                    </ol>
+                    <p>Thanks,<br>Dev Team</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn" style="background: rgba(255, 255, 255, 0.05); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.1);" onclick="closeModal('clarificationModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="sendClarification()">📤 Send Clarification</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sprint Analysis Modal -->
+    <div id="sprintModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sprintModal')">&times;</span>
+            <div class="card-header">
+                <div class="card-icon sprint-summary">📊</div>
+                <div>
+                    <div class="card-title">Sprint Analysis</div>
+                    <div class="card-subtitle">ECOM-2023-11 Detailed Report</div>
+                </div>
+            </div>
+            <div style="margin: 24px 0;">
+                <h3 style="margin-bottom: 16px;">Key Insights</h3>
+                <ul style="list-style-type: none;">
+                    <li style="padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">✅ 72% of completed tickets had excellent clarity scores (80%+)</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">⚠️ 3 blocked tickets are all waiting on API specifications</li>
+                    <li style="padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">📈 Team velocity is 15% higher than previous sprint</li>
+                    <li style="padding: 8px 0;">🔍 Focus area: User permissions has 3 dependent tickets</li>
+                </ul>
+
+                <h3 style="margin: 24px 0 16px 0;">Recommendations</h3>
+                <div class="question-item" style="margin-bottom: 12px;">
+                    <strong>Prioritize API specifications</strong> for blocked tickets to unblock team
+                </div>
+                <div class="question-item" style="margin-bottom: 12px;">
+                    <strong>Schedule refinement session</strong> for user permission related tickets
+                </div>
+                <div class="question-item">
+                    <strong>Consider splitting</strong> the checkout flow epic into smaller chunks
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="closeModal('sprintModal')">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Cases Modal -->
+    <div id="testCasesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('testCasesModal')">&times;</span>
+            <div class="card-header">
+                <div class="card-icon test-cases">🧪</div>
+                <div>
+                    <div class="card-title">Additional Test Cases</div>
+                    <div class="card-subtitle">AI-generated for ECOM-233</div>
+                </div>
+            </div>
+            <div style="margin: 24px 0;">
+                <p>Based on similar permission implementations, here are 5 more test cases:</p>
+                <div class="test-case">
+                    <strong>TC-05:</strong> Verify permission changes are reflected immediately without requiring logout
+                </div>
+                <div class="test-case">
+                    <strong>TC-06:</strong> Verify error messages when unauthorized users attempt restricted actions
+                </div>
+                <div class="test-case">
+                    <strong>TC-07:</strong> Verify permission inheritance works for nested user roles
+                </div>
+                <div class="test-case">
+                    <strong>TC-08:</strong> Verify permission changes are logged in audit trail
+                </div>
+                <div class="test-case">
+                    <strong>TC-09:</strong> Verify performance with 1000+ concurrent permission checks
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn" style="background: rgba(255, 255, 255, 0.05); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.1);" onclick="closeModal('testCasesModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addTestCases()">➕ Add to Test Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function showClarification() {
+            document.getElementById('clarificationModal').style.display = 'block';
+        }
+
+        function showSprintAnalysis() {
+            document.getElementById('sprintModal').style.display = 'block';
+        }
+
+        function showTestCases() {
+            document.getElementById('testCasesModal').style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Action functions
+        function sendClarification() {
+            alert('Clarification request sent to product team!');
+            closeModal('clarificationModal');
+        }
+
+        function addTestCases() {
+            alert('5 test cases added to your test plan!');
+            closeModal('testCasesModal');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Simulate loading animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+
+            // Add floating elements dynamically
+            const floatingContainer = document.querySelector('.floating-elements');
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.width = `${Math.random() * 100 + 50}px`;
+                element.style.height = element.style.width;
+                element.style.top = `${Math.random() * 80 + 10}%`;
+                element.style.left = `${Math.random() * 80 + 10}%`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                floatingContainer.appendChild(element);
+            }
+        });
+    </script>

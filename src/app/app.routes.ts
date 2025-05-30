@@ -10,6 +10,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 
+import { AIComponent } from './ai/ai.component';
+import { DevaiComponent } from './devai/devai.component';
+
 export const routes: Routes = [
 {path:"landing", component:LandingPageComponent},
 {path:"contact", component:ContactComponent},
@@ -19,6 +22,8 @@ export const routes: Routes = [
 {path:"main", component:MainsectionComponent},
 {path:"sidebar", component:SidebarComponent},
 {path:"testimonials", component:TestimonialsComponent},
+{path:"ai", component:AIComponent},
+{path:"devai", component:DevaiComponent},
  {path:"**", component:PagenotfountComponent},
 
 ];
